@@ -7,7 +7,7 @@ import oripa.concurrent.PartialCollectionProcess;
 public class SquareTimeProcess extends PartialCollectionProcess<Integer, Integer> {
 
 	@Override
-	public Collection<Integer> run(Collection<Integer> values) {
+	public Integer run(Collection<Integer> values) {
 		
 		int square = 0;
 		for(int i = 0; i < values.size(); i++){
@@ -17,7 +17,7 @@ public class SquareTimeProcess extends PartialCollectionProcess<Integer, Integer
 		}
 		
 		
-		return values;
+		return new Integer(square);
 	}
 
 }

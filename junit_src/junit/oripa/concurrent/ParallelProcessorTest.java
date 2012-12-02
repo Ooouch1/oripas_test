@@ -73,7 +73,7 @@ public class ParallelProcessorTest {
 			PartialCollectionProcessFactory<Integer, Integer> factory, ArrayList<Integer> values){
 		
 		ListParallelProcessor<Integer, Integer> processor = 
-				new ListParallelProcessor<>(new SquareTimeProcessFactory());
+				new ListParallelProcessor<>(factory);
 
 
 		long startTime = System.currentTimeMillis();
@@ -93,12 +93,12 @@ public class ParallelProcessorTest {
 		return result;
 	}
 
-	private Collection<Integer> executeNormalProcessing(
+	private Integer executeNormalProcessing(
 			PartialCollectionProcessFactory<Integer, Integer> factory, ArrayList<Integer> values){
 	
 		long startTime = System.currentTimeMillis();
 		
-		Collection<Integer> result = factory.create().run(values);
+		Integer result = factory.create().run(values);
 
 		long endTime = System.currentTimeMillis();
 		logger.info("the normal processing took " + Long.toString(endTime - startTime) + "[ms]");
@@ -150,7 +150,7 @@ public class ParallelProcessorTest {
 	}
 	
 	private Integer doTotal(ArrayList<Integer> values){
-		return executeNormalProcessing(new SummationProcessFactory(), values).iterator().next();	
+		return executeNormalProcessing(new SummationProcessFactory(), values);	
 	}
 
 }
