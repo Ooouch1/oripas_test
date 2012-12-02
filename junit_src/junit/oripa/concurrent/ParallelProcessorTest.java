@@ -52,7 +52,7 @@ public class ParallelProcessorTest {
 	@Test
 	public void testExecute() {
 		
-		ArrayList<Integer> values = createSequentialIntegers(0, 60000);
+		ArrayList<Integer> values = createSequentialIntegers(0, 10000);
 
 		logger.info("testExecute");
 		assertEquals(doTotal(values), parallelSummation(values));
